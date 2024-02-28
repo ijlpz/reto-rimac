@@ -39,7 +39,7 @@ const Home = () => {
                 <div className="mr-2">
                   <Tag
                     text="Seguro Salud Flexible"
-                    className="font-bold text-base"
+                    className="font-bold text-xs lg:text-base"
                   />
                   <h1 className="text-[32px] lg:text-[36px] mt-4 font-bold tracking-normal text-left leading-10">
                     Creado para ti y tu familia
