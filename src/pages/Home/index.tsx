@@ -20,7 +20,7 @@ const Home = () => {
       <div className="relative p-0 m-0 ">
         <BackgroundHome />
         <Header />
-        <div className="container mx-auto px-6 pt-4 pb-16">
+        <div className="container mx-auto px-6 pt-4 pb-16 relative z-20">
           <div className="flex flex-col lg:flex-row lg:space-x-6 h-full">
             <div className="w-full lg:w-1/2 h-full hidden lg:flex">
               <div className="w-full h-full relative m-auto">
