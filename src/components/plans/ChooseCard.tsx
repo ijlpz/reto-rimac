@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { SelectCard } from './SelectCard';
+import { CheckBoxCard } from './CheckBoxCard';
 
-const SelectCardTypes = {
+export const SelectCardTypes = {
   FOR_ME: 1,
   FOR_OTHER: 2,
 };
@@ -17,7 +17,7 @@ export const ChooseCard: FC<PropsChooseCard> = ({
 }) => {
   return (
     <div className="flex flex-col sm:flex-row px-4 sm:px-0 sm:gap-8 pt-8">
-      <SelectCard
+      <CheckBoxCard
         className="flex-1"
         onClick={() => setSelectedCard(SelectCardTypes.FOR_ME)}
         selected={selectedCard === SelectCardTypes.FOR_ME}
@@ -25,7 +25,7 @@ export const ChooseCard: FC<PropsChooseCard> = ({
         title="Para mí"
         text="Cotiza tu seguro de salud y agrega familiares si así lo deseas."
       />
-      <SelectCard
+      <CheckBoxCard
         className="flex-1"
         onClick={() => setSelectedCard(SelectCardTypes.FOR_OTHER)}
         selected={selectedCard === SelectCardTypes.FOR_OTHER}

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Checkbox } from '../common/Checkbox/Checkbox';
 import Image from 'next/image';
 
-interface PropsSelectCard {
+interface PropsCheckBoxCard {
   icon: string;
   title: string;
   text: string;
@@ -11,7 +11,7 @@ interface PropsSelectCard {
   onClick: () => void;
 }
 
-export const SelectCard: FC<PropsSelectCard> = ({
+export const CheckBoxCard: FC<PropsCheckBoxCard> = ({
   icon,
   title='',
   text='',
