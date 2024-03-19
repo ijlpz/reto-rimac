@@ -1,48 +1,124 @@
-import Image from 'next/image';
-import { FC, useState } from 'react';
+import {
+  ChangeEvent,
+  FC,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
+import { Icon } from '../Icon/Icon';
 
 interface Props {
-  text?: string;
-  isActive?: boolean;
+  name?: string;
+  value?: string;
+  checked?: boolean;
+  disabled?: boolean;
+  className?: string;
+  children?: ReactNode;
+  size?: 'xs' | 'sm' | 'lg';
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   type?: 'rounded' | 'square';
-  size?: 'sm' | 'normal';
   activeColor?: 'black' | 'green';
+  feedback?: string;
 }
 
 export const Checkbox: FC<Props> = ({
-  text,
+  name,
+  value,
+  checked = false,
+  disabled = false,
+  className,
+  onChange,
+  size = 'xs',
+  children,
+  feedback = '',
   activeColor = 'black',
-  size = 'normal',
   type = 'square',
 }) => {
-  const [isChecked, setIsChecked] = useState(true);
   const bgColor = activeColor === 'black' ? 'bg-black' : 'bg-green-500';
-  const borderColor = isChecked ? 'border-white' : 'border-gray-300';
   const borderRadius = type === 'square' ? 'rounded' : 'rounded-full';
-  const checkmarkSize = size === 'sm' ? 'w-8 h-8' : 'w-6 h-6';
-  const textSize = size === 'normal' ? 'text-sm' : 'text-lg';
-  const sourceImage =
-    size === 'normal' ? '/images/gl-sm-check.svg' : '/images/gl_check.svg';
+
+  const [defaultName, setDefaultName] = useState<string>();
+
+  const changeHandler = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      if (typeof onChange === 'function') {
+        onChange(e);
+      }
+    },
+    [onChange],
+  );
+
+  useEffect(() => {
+    if (!name) {
+      setDefaultName(`input_${Date.now()}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <label
-      className={`flex items-center cursor-pointer ${textSize}`}
-      onClick={() => setIsChecked(!isChecked)}
+    <div
+      className={`flex items-center text-base text-gray-1 ${className || ''}`}
     >
-      <div
-        className={`flex justify-center items-center p-1 border ${checkmarkSize} ${borderColor} ${bgColor} ${borderRadius}`}
-      >
-        {isChecked && (
-          <Image
-            src={sourceImage}
-            alt="Check"
-            // className={`block ${checkmarkSize}`}
-            width={20}
-            height={20}
+      <div className="relative flex items-center">
+        <input
+          id={name || defaultName}
+          type="checkbox"
+          name={name || defaultName}
+          value={value}
+          checked={checked}
+          disabled={disabled}
+          onChange={changeHandler}
+          className={`
+        appearance-none
+        ${size === 'lg' ? 'w-7 h-7' : size === 'sm' ? 'w-6 h-6' : 'w-5 h-5'} 
+        border
+        transition-all
+        ${
+          disabled
+            ? 'border-gray-200'
+            : checked
+            ? activeColor === 'black'
+              ? 'border-black'
+              : 'border-green-500'
+            : 'border-gray-600'
+        }
+        ${checked ? (disabled ? 'bg-gray-4' : `${bgColor}`) : 'bg-white'} 
+        ${borderRadius}
+        ${feedback ? `border-primary` : `border-gray-600`}
+      `}
+          data-testid={name}
+        />
+        {checked && (
+          <Icon
+            name="CheckboxMarkIcon"
+            className={`
+        absolute pointer-events-none
+        ${
+          size === 'lg'
+            ? 'left-[1px] top-[1px]'
+            : size === 'sm'
+            ? 'left-[3px] top-[3px]'
+            : 'left-[2px] top-[1px]'
+        }
+         
+        transition-all
+        ${checked ? 'text-white' : 'text-transparent'}
+      `}
+            size={size === 'lg' ? 20 : size === 'sm' ? 14 : 12}
           />
         )}
       </div>
-      <span className="ml-2">{text}</span>
-    </label>
+      {children && (
+        <label
+          htmlFor={name}
+          className={`ml-2.5 text-sm ${disabled ? 'opacity-40' : ''}  ${
+            feedback ? `text-primary` : 'text-secondary'
+          }`}
+        >
+          {children}
+        </label>
+      )}
+    </div>
   );
 };
