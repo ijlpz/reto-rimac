@@ -42,7 +42,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
         rounded-full
         text-white
         font-bold
-        ${variantBackground[variant]}
+        ${disabled ? 'bg-slate-500 cursor-default' : `${variantBackground[variant]}`}
         ${className || ''}
       `}
       onClick={onClick}

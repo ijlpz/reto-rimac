@@ -24,7 +24,7 @@ const OPTIONS = [
 
 export const Home = () => {
   const { push: NavigateTo } = useRouter();
-  const { data: userData, refetch } = useQuery(
+  const { data: userData, refetch, isFetching } = useQuery(
     ['user'],
     () => apiService.getUser(),
     {
@@ -161,9 +161,10 @@ export const Home = () => {
               <Button
                 className="text-[20px] mt-6 w-full lg:w-[190px]"
                 variant="secondary"
+                disabled={isFetching}
                 type="submit"
               >
-                Cotiza aquí
+                {isFetching ? 'Cargando' : 'Cotiza aquí'}
               </Button>
             </div>
           </div>
