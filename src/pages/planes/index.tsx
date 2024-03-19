@@ -1,9 +1,8 @@
-import React from 'react'
+import { Plans } from '@/components/Plans';
+import React from 'react';
 
 const Planes = () => {
-  return (
-    <div>Planes</div>
-  )
-}
+  return <Plans />;
+};
 
-export default Planes
+export default Planes;
