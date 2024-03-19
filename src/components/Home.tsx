@@ -98,6 +98,7 @@ export const Home = () => {
                   selectStyle={{
                     borderTopRightRadius: '0',
                     borderBottomRightRadius: '0',
+                    borderRight: '0',
                   }}
                   options={OPTIONS}
                   {...formik.getFieldProps('documentType')}
