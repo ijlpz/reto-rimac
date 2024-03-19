@@ -7,6 +7,7 @@ const BackgroundHome = () => {
       <Image
         src="/images/blur-purple.svg"
         alt=" BlurPurple"
+        priority
         className="fixed bottom-0 left-0 hidden md:flex z-0"
         width={0}
         height={0}
@@ -31,7 +32,8 @@ const BackgroundHome = () => {
       <Image
         src="/images/blur-green-small.svg"
         alt=" BlurGreen"
-        className="fixed top-0 right-0 flex md:hidden"
+        className="fixed top-0 right-0 flex md:hidden w-auto h-auto"
+        priority
         width={0}
         height={0}
         style={{ width: 'auto', height: 'auto' }}
