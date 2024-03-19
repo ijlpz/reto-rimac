@@ -43,10 +43,16 @@ export const Input: FunctionComponent<InputProps> = ({
   autocomplete = true,
   readonly = false,
 }) => {
-  const [defaultName] = useState(`${Date.now()}`);
+  const [defaultName, setDefaultName] = useState<string>();
   const inputRef = useRef<HTMLInputElement>(null);
   const labelRef = useRef<HTMLLabelElement>(null);
 
+  useEffect(() => {
+    if (!name) {
+      setDefaultName(`input_${Date.now()}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className={`${className || ''} relative`}>
       <input
