@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import React from 'react';
 
@@ -10,23 +11,26 @@ const Header = () => {
           alt="Rimac"
           width={73}
           height={26}
+          className="w-auto h-auto"
         />
       </div>
 
       <div className="flex justify-end items-center">
-        <div className='mr-4 hidden lg:flex'>
+        <div className="mr-4 hidden lg:flex">
           <p className="text-sm font-semibold">¡Compra por este medio!</p>
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex justify-end items-center">
           <Image
             src="/images/telephone.svg"
             alt="telephone"
+            className="w-auto h-auto"
             width={20}
             height={20}
+            style={{ maxWidth: '20px', maxHeight: '20px' }}
           />
 
-          <p className='font-black text-lg'>(01) 411 6001</p>
+          <p className="font-black text-lg">(01) 411 6001</p>
         </div>
       </div>
     </nav>

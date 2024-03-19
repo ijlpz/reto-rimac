@@ -11,10 +11,11 @@ const Footer = () => {
             alt="Logo Rimac"
             width={73}
             height={26}
+            className="w-auto h-auto"
           />
         </div>
 
-        <div className='mt-4 lg:mt-0'>
+        <div className="mt-4 lg:mt-0">
           <p className="text-white text-sm">
             © 2023 RIMAC Seguros y Reaseguros.
           </p>
