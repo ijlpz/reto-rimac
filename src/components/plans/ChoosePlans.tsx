@@ -24,9 +24,6 @@ export const ChoosePlans: FC<ChoosePlansProps> = ({
   });
   return (
     <div className="max-w-[928px] m-auto">
-      <p>{`PRUEBA ${ageUser} ' ' ${selectedCard} ' ' ${JSON.stringify(
-        user,
-      )}`}</p>
       <div className={`flex flex-wrap justify-center gap-8`}>
         {plans?.list
           .filter((plan: IPlan) => plan?.age <= ageUser)
