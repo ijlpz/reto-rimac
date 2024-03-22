@@ -72,6 +72,11 @@ export const Plans = () => {
         />
       </div>
       <p className="text-center text-2xl font-bold">{selectedCard}</p>
+      <ChoosePlans
+        ageUser={ageUser}
+        selectedCard={selectedCard}
+        user={userInfoObject}
+      />
       {!!selectedCard && (
         <div ref={choosePlansRef}>
           <ChoosePlans
@@ -81,7 +86,9 @@ export const Plans = () => {
           />
         </div>
       )}
-      <p className="text-center text-2xl font-bold">{selectedCard + 'PRUEBA iOS'}</p>
+      <p className="text-center text-2xl font-bold">
+        {selectedCard + ' PRUEBA iOS'}
+      </p>
     </div>
   );
 };
