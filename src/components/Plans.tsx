@@ -6,6 +6,8 @@ import { ChooseCard } from './plans/ChooseCard';
 
 import dayjs from 'dayjs';
 import { ChoosePlans } from './plans/ChoosePlans';
+import { Stepper } from './common/Stepper/Stepper';
+import { Back } from './common/Back/Back';
 
 const calcUserAge = (birthDay: string) => {
   const birthDate = dayjs(birthDay);
@@ -41,10 +43,19 @@ export const Plans = () => {
       choosePlansRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [selectedCard]);
-  
+
   return (
     <div className="relative p-0 m-0 min-h-screen">
       <Header />
+      <Stepper>
+        <Stepper.Step number={1} isActive>
+          Planes y coberturas
+        </Stepper.Step>
+        <Stepper.Step number={2} isCompleted>
+          Resumen
+        </Stepper.Step>
+      </Stepper>
+      <Back route="/" className="text-[#4F4FFF] font-bold pt-10 pb-10" />
       <div className="max-w-xl m-auto">
         <div className="sm:text-center px-4 sm:px-0 max-w-md m-auto">
           <h2
@@ -60,9 +71,13 @@ export const Plans = () => {
           setSelectedCard={setSelectedCard}
         />
       </div>
-      {selectedCard && (
+      {!!selectedCard && (
         <div ref={choosePlansRef}>
-          <ChoosePlans ageUser={ageUser} selectedCard={selectedCard} user={userInfoObject}/>
+          <ChoosePlans
+            ageUser={ageUser}
+            selectedCard={selectedCard}
+            user={userInfoObject}
+          />
         </div>
       )}
     </div>
