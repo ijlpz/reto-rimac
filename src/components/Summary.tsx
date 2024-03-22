@@ -43,7 +43,7 @@ export const Summary = () => {
             <p
               suppressHydrationWarning
             >{`DNI: ${summaryDataObject.documentNumber}`}</p>
-            <p suppressHydrationWarning>Celular: 5130216147</p>
+            <p suppressHydrationWarning>{`Celular: ${summaryDataObject.phone}`}</p>
 
             <p className="font-bold mt-4">Plan elegido</p>
             <p suppressHydrationWarning>{summaryDataObject.planName}</p>
