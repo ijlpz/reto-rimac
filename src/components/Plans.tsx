@@ -17,24 +17,23 @@ const calcUserAge = (birthDay: string) => {
 
 export const Plans = () => {
   const initialUserInfo = getUserInfo() || '{}';
-  const [userInfo, setUserInfo] = useState<string>(initialUserInfo);
-
+  // const [userInfo, setUserInfo] = useState<string>(initialUserInfo);
+  const [userInfoObject, setUserInfoObject] = useState<IUser>({} as IUser);
+  const [ageUser, setAgeUser] = useState(0);
   const [selectedCard, setSelectedCard] = useState(0);
-
   const choosePlansRef = useRef<HTMLDivElement>(null);
 
-  const userInfoObject: IUser = useMemo(() => {
-    return userInfo ? JSON.parse(userInfo) : {};
-  }, [userInfo]);
-
-  const ageUser = useMemo(
-    () => calcUserAge(userInfoObject.birthDay),
-    [userInfoObject],
-  );
+  useEffect(() => {
+    if (Object.keys(userInfoObject).length !== 0) {
+      setAgeUser(calcUserAge(userInfoObject.birthDay));
+    }
+  }, [userInfoObject]);
 
   useEffect(() => {
     if (initialUserInfo !== '{}') {
-      setUserInfo(initialUserInfo);
+      const info = JSON.parse(initialUserInfo);
+      // setAgeUser(calcUserAge(info.birthDay));
+      setUserInfoObject(info);
     }
   }, [initialUserInfo]);
 
@@ -76,7 +75,7 @@ export const Plans = () => {
       <p className="text-center text-2xl font-bold">
         {'userInfoObject' + JSON.stringify(userInfoObject)}
       </p>
-      <p className="text-center text-2xl font-bold">{'userInfo' + userInfo}</p>
+      {/* <p className="text-center text-2xl font-bold">{'userInfo' + userInfo}</p> */}
       {!!selectedCard && (
         <div ref={choosePlansRef}>
           <ChoosePlans
