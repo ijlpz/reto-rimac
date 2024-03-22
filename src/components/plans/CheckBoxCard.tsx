@@ -13,8 +13,8 @@ interface PropsCheckBoxCard {
 
 export const CheckBoxCard: FC<PropsCheckBoxCard> = ({
   icon,
-  title='',
-  text='',
+  title = '',
+  text = '',
   selected,
   className = '',
   onClick,
@@ -25,6 +25,11 @@ export const CheckBoxCard: FC<PropsCheckBoxCard> = ({
       className={`${className} cursor-pointer flex flex-col p-6 mb-4 pt-4 pb-10 border-[3px] rounded-3xl  text-gray-700  ${
         selected ? 'border-secondary' : 'border-transparent shadow-xl'
       } border-solid`}
+      style={{
+        boxShadow: `${
+          selected ? 'none' : '0px 1px 32px 0px rgba(174, 172, 243, 0.35)'
+        }`,
+      }}
     >
       <div className="flex justify-end">
         <Checkbox
