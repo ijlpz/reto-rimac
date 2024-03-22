@@ -85,7 +85,7 @@ export const Home = () => {
                 />
               </div>
             </div>
-            <div className="max-w-[375px] m-auto pl-6 lg:w-1/2 mt-6 lg:mt-0">
+            <div className="max-w-[400px] m-auto px-6 lg:w-1/2 mt-6 lg:mt-0">
               <div className="flex flex-row items-center justify-between">
                 <div className="mr-2">
                   <Tag
