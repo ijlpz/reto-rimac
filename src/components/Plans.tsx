@@ -71,6 +71,7 @@ export const Plans = () => {
           setSelectedCard={setSelectedCard}
         />
       </div>
+      <p className="text-center text-2xl font-bold">{selectedCard}</p>
       {!!selectedCard && (
         <div ref={choosePlansRef}>
           <ChoosePlans
