@@ -29,11 +29,11 @@ export const Plans = () => {
 
   const ageUser = useMemo(
     () => calcUserAge(userInfoObject.birthDay),
-    [userInfoObject.birthDay],
+    [userInfoObject],
   );
 
   useEffect(() => {
-    if (initialUserInfo) {
+    if (initialUserInfo !== '{}') {
       setUserInfo(initialUserInfo);
     }
   }, [initialUserInfo]);
@@ -87,7 +87,7 @@ export const Plans = () => {
         </div>
       )}
       <p className="text-center text-2xl font-bold">
-        {selectedCard + ' PRUEBA iOS'}
+        {selectedCard + ' PRUEBA 4 iOS'}
       </p>
     </div>
   );
