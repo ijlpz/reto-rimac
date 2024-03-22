@@ -4,7 +4,7 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <nav className="container px-6 py-3 mx-auto flex justify-between items-center z-30 relative">
+    <nav className="max-w-[73em] px-8 py-3 mx-auto flex justify-between items-center z-30 relative">
       <div className="">
         <Image
           src="/images/logo-rimac.svg"

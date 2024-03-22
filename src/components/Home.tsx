@@ -71,7 +71,7 @@ export const Home = () => {
       <div className="relative p-0 m-0 ">
         <BackgroundHome />
         <Header />
-        <div className="container mx-auto px-6 pt-4 pb-16 relative z-20">
+        <div className="max-w-[73em] mx-auto px-6 pt-9 pb-16 relative z-20">
           <div className="flex flex-col lg:flex-row lg:space-x-6 h-full">
             <div className="w-full lg:w-1/2 h-full hidden lg:flex">
               <div className="w-full h-full relative m-auto">
@@ -85,14 +85,14 @@ export const Home = () => {
                 />
               </div>
             </div>
-            <div className="max-w-[350px] m-auto lg:w-1/2 mt-6 lg:mt-0">
+            <div className="max-w-[375px] m-auto pl-6 lg:w-1/2 mt-6 lg:mt-0">
               <div className="flex flex-row items-center justify-between">
                 <div className="mr-2">
                   <Tag
                     text="Seguro Salud Flexible"
-                    className="font-bold text-sm py-1 lg:py-0 lg:text-base"
+                    className="font-bold text-sm py-1 lg:py-0 lg:px-2 -tracking-tighter lg:text-sm"
                   />
-                  <h1 className="text-[32px] lg:text-[36px] mt-4 font-bold tracking-normal text-left leading-10">
+                  <h1 className="text-[32px] lg:text-[2.05em] mt-4 font-bold tracking-normal text-left leading-10">
                     Creado para ti y tu familia
                   </h1>
                 </div>
@@ -107,11 +107,11 @@ export const Home = () => {
                   />
                 </div>
               </div>
-              <h4 className="font-bold mt-4 text-[15px]">
+              <h4 className="font-bold mt-1 text-[15px]">
                 Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe
                 nuestra asesoría. 100% online.
               </h4>
-              <div className="mt-4 flex justify-between">
+              <div className="mt-5 flex justify-between">
                 <Select
                   selectStyle={{
                     borderTopRightRadius: '0',
@@ -140,7 +140,7 @@ export const Home = () => {
                   {...getFeedbackError(formik, 'phone')}
                 />
               </div>
-              <div className="mt-4">
+              <div className="mt-6">
                 <Checkbox
                   {...formik.getFieldProps('privacyPolicies')}
                   {...getFeedbackError(formik, 'privacyPolicies')}
@@ -155,7 +155,7 @@ export const Home = () => {
                   Acepto lo Política de Privacidad{' '}
                 </Checkbox>
               </div>
-              <div className="mt-1">
+              <div className="mt-3">
                 <Checkbox
                   {...formik.getFieldProps('commercialPolicies')}
                   {...getFeedbackError(formik, 'commercialPolicies')}
