@@ -10,16 +10,14 @@ import { Stepper } from './common/Stepper/Stepper';
 import { Back } from './common/Back/Back';
 
 const calcUserAge = (birthDay: string) => {
-  alert(birthDay);
-  const year = new Date(birthDay).getFullYear();
-  const age = new Date().getFullYear() - year;
-  alert(age)
+  const formattedBirthDay = birthDay.split('-').reverse().join('-');
+  const birthDate = dayjs(formattedBirthDay, 'YYYY-MM-DD');
+  const age = dayjs().diff(birthDate, 'year');
   return age;
 };
 
 export const Plans = () => {
   const initialUserInfo = getUserInfo() || '{}';
-  // const [userInfo, setUserInfo] = useState<string>(initialUserInfo);
   const [userInfoObject, setUserInfoObject] = useState<IUser>({} as IUser);
   const [ageUser, setAgeUser] = useState(0);
   const [selectedCard, setSelectedCard] = useState(0);
@@ -34,7 +32,6 @@ export const Plans = () => {
   useEffect(() => {
     if (initialUserInfo !== '{}') {
       const info = JSON.parse(initialUserInfo);
-      // setAgeUser(calcUserAge(info.birthDay));
       setUserInfoObject(info);
     }
   }, [initialUserInfo]);
@@ -72,7 +69,7 @@ export const Plans = () => {
           setSelectedCard={setSelectedCard}
         />
       </div>
-      <p className="text-center text-2xl font-bold">PRUEBA 11</p>
+      <p className="text-center text-2xl font-bold">PRUEBA 12</p>
       <p className="text-center text-2xl font-bold">{selectedCard}</p>
       <p className="text-center text-2xl font-bold">{'Age:' + ageUser}</p>
       <p className="text-center text-2xl font-bold">
@@ -82,7 +79,7 @@ export const Plans = () => {
       {!!selectedCard && (
         <div ref={choosePlansRef}>
           <ChoosePlans
-            ageUser={calcUserAge(userInfoObject.birthDay)}
+            ageUser={calcUserAge(userInfoObject?.birthDay)}
             selectedCard={selectedCard}
             user={userInfoObject}
           />
