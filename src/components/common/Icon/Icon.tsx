@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import * as allIcons from './icons/index';
 import { IconProps as DynamicIconProps } from '@/utils/interfaces';
 
-export const IconNames = ['CheckboxMarkIcon', 'UsersIcon'] as const;
+export const IconNames = ['CheckboxMarkIcon', 'UsersIcon', 'BackIcon'] as const;
 
 export type IconName = (typeof IconNames)[number];
 
