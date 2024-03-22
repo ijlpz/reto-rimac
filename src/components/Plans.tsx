@@ -71,15 +71,17 @@ export const Plans = () => {
           setSelectedCard={setSelectedCard}
         />
       </div>
-      {
-        <div className='flex max-w-[928px] m-auto h-auto'>
+      <p className="text-center text-2xl font-bold">{selectedCard}</p>
+      {!!selectedCard && (
+        <div ref={choosePlansRef}>
           <ChoosePlans
             ageUser={ageUser}
             selectedCard={selectedCard}
             user={userInfoObject}
           />
         </div>
-      }
+      )}
+      <p className="text-center text-2xl font-bold">{selectedCard + 'PRUEBA iOS'}</p>
     </div>
   );
 };
