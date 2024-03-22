@@ -13,6 +13,7 @@ const calcUserAge = (birthDay: string) => {
   alert(birthDay);
   const year = new Date(birthDay).getFullYear();
   const age = new Date().getFullYear() - year;
+  alert(age)
   return age;
 };
 
@@ -71,7 +72,7 @@ export const Plans = () => {
           setSelectedCard={setSelectedCard}
         />
       </div>
-      <p className="text-center text-2xl font-bold">PRUEBA 10</p>
+      <p className="text-center text-2xl font-bold">PRUEBA 11</p>
       <p className="text-center text-2xl font-bold">{selectedCard}</p>
       <p className="text-center text-2xl font-bold">{'Age:' + ageUser}</p>
       <p className="text-center text-2xl font-bold">
@@ -81,7 +82,7 @@ export const Plans = () => {
       {!!selectedCard && (
         <div ref={choosePlansRef}>
           <ChoosePlans
-            ageUser={ageUser}
+            ageUser={calcUserAge(userInfoObject.birthDay)}
             selectedCard={selectedCard}
             user={userInfoObject}
           />
