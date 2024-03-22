@@ -74,7 +74,7 @@ export const Plans = () => {
       <p className="text-center text-2xl font-bold">{selectedCard}</p>
       <p className="text-center text-2xl font-bold">{'Age:' + ageUser}</p>
       <p className="text-center text-2xl font-bold">
-        {'userInfoObject' + userInfoObject}
+        {'userInfoObject' + JSON.stringify(userInfoObject)}
       </p>
       <p className="text-center text-2xl font-bold">{'userInfo' + userInfo}</p>
       {!!selectedCard && (
