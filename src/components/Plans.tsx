@@ -72,7 +72,7 @@ export const Plans = () => {
         />
       </div>
       {
-        <div ref={choosePlansRef}>
+        <div className='flex max-w-[928px] m-auto h-auto'>
           <ChoosePlans
             ageUser={ageUser}
             selectedCard={selectedCard}
