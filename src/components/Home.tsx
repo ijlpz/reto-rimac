@@ -13,7 +13,7 @@ import Footer from './layout/Footer/Footer';
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from '@/common/forms/register';
 import { getFeedbackError } from '@/common/forms/utils';
-import { setUserInfo } from '@/utils/storage';
+import { getUserInfo, removeUserInfo, setUserInfo } from '@/utils/storage';
 import { useRouter } from 'next/router';
 
 const OPTIONS = [
@@ -24,14 +24,17 @@ const OPTIONS = [
 
 export const Home = () => {
   const { push: NavigateTo } = useRouter();
-  const { data: userData, refetch, isFetching } = useQuery(
-    ['user'],
-    () => apiService.getUser(),
-    {
-      enabled: false,
-      retry: false,
-    },
-  );
+
+  const initialUserInfo = getUserInfo();
+
+  const {
+    data: userData,
+    refetch,
+    isFetching,
+  } = useQuery(['user'], () => apiService.getUser(), {
+    enabled: false,
+    retry: false,
+  });
 
   const formik = useFormik<typeof initialValues>({
     initialValues,
@@ -43,10 +46,23 @@ export const Home = () => {
 
   useEffect(() => {
     if (userData) {
-      setUserInfo(JSON.stringify(userData));
+      setUserInfo(
+        JSON.stringify({
+          ...userData,
+          documentType: values.documentType,
+          documentNumber: values.documentNumber,
+          phone: values.phone,
+        }),
+      );
       NavigateTo('/planes');
     }
-  }, [NavigateTo, userData]);
+  }, [NavigateTo, userData, values]);
+
+  useEffect(() => {
+    if (initialUserInfo) {
+      removeUserInfo();
+    }
+  }, [initialUserInfo]);
 
   return (
     <form onSubmit={handleSubmit}>
