@@ -10,11 +10,9 @@ import { Stepper } from './common/Stepper/Stepper';
 import { Back } from './common/Back/Back';
 
 const calcUserAge = (birthDay: string) => {
-  const birthDate = new Date(birthDay);
-  const today = new Date();
-  const age = Math.floor(
-    (today.getTime() - birthDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25),
-  );
+  alert(birthDay);
+  const year = new Date(birthDay).getFullYear();
+  const age = new Date().getFullYear() - year;
   return age;
 };
 
@@ -73,7 +71,7 @@ export const Plans = () => {
           setSelectedCard={setSelectedCard}
         />
       </div>
-      <p className="text-center text-2xl font-bold">PRUEBA 9</p>
+      <p className="text-center text-2xl font-bold">PRUEBA 10</p>
       <p className="text-center text-2xl font-bold">{selectedCard}</p>
       <p className="text-center text-2xl font-bold">{'Age:' + ageUser}</p>
       <p className="text-center text-2xl font-bold">
