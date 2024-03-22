@@ -10,7 +10,8 @@ import { Stepper } from './common/Stepper/Stepper';
 import { Back } from './common/Back/Back';
 
 const calcUserAge = (birthDay: string) => {
-  const birthDate = dayjs(birthDay, 'DD-MM-YYYY');
+  const formattedBirthDay = birthDay.split('-').reverse().join('-');
+  const birthDate = dayjs(formattedBirthDay, 'YYYY-MM-DD');
   const age = dayjs().diff(birthDate, 'year');
   return age;
 };
