@@ -71,7 +71,7 @@ export const Plans = () => {
           setSelectedCard={setSelectedCard}
         />
       </div>
-      {!!selectedCard && (
+      {
         <div ref={choosePlansRef}>
           <ChoosePlans
             ageUser={ageUser}
@@ -79,7 +79,7 @@ export const Plans = () => {
             user={userInfoObject}
           />
         </div>
-      )}
+      }
     </div>
   );
 };
