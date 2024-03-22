@@ -6,6 +6,14 @@ export interface IUser {
   birthDay: string;
 }
 
+export interface ISummary extends IUser {
+  documentType: string;
+  documentNumber: string;
+  phone: string;
+  planName: string;
+  price: number;
+}
+
 export interface IList {
   list: IPlan[];
 }
