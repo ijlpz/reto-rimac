@@ -45,7 +45,7 @@ export const Plans = () => {
   }, [selectedCard]);
 
   return (
-    <div className="relative p-0 m-0 min-h-screen">
+    <div className="relative p-0 m-0">
       <Header />
       <Stepper>
         <Stepper.Step number={1} isActive>
@@ -71,7 +71,6 @@ export const Plans = () => {
           setSelectedCard={setSelectedCard}
         />
       </div>
-      <p className="text-center text-2xl font-bold">{selectedCard}</p>
       {!!selectedCard && (
         <div ref={choosePlansRef}>
           <ChoosePlans
