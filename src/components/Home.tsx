@@ -34,6 +34,7 @@ export const Home = () => {
   } = useQuery(['user'], () => apiService.getUser(), {
     enabled: false,
     retry: false,
+    cacheTime: 0, 
   });
 
   const formik = useFormik<typeof initialValues>({
@@ -45,7 +46,7 @@ export const Home = () => {
   const { handleSubmit, values, setFieldValue } = formik;
 
   useEffect(() => {
-    if (userData) {
+    if (userData && values.documentNumber) {
       setUserInfo(
         JSON.stringify({
           ...userData,
@@ -56,7 +57,8 @@ export const Home = () => {
       );
       NavigateTo('/planes');
     }
-  }, [NavigateTo, userData, values]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [NavigateTo, userData]);
 
   useEffect(() => {
     if (initialUserInfo) {
