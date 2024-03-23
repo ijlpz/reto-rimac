@@ -16,4 +16,5 @@ export const validationSchema = Yup.object({
   documentNumber: stringRequired,
   phone: stringRequired,
   privacyPolicies: booleanTrueRequired,
+  commercialPolicies: booleanTrueRequired,
 });
