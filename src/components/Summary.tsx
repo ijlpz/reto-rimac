@@ -19,7 +19,7 @@ export const Summary = () => {
 
       <div className="w-full bg-transparent sm:bg-[#EDEFFC] border-b border-solid border-[#EDEFFC] flex items-center px-4">
         <div className="sm:hidden">
-          <Back route="/" className="text-[#4F4FFF] font-bold" />
+          <Back route="/planes" className="text-[#4F4FFF] font-bold" />
         </div>
         <StepperRimac
           stepActive={2}
