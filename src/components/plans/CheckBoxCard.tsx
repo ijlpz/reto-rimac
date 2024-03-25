@@ -39,11 +39,11 @@ export const CheckBoxCard: FC<PropsCheckBoxCard> = ({
           activeColor="green"
         />
       </div>
-      <div className="flex items-center gap-2 font-bold mt-2 mb-1 sm:flex-col sm:items-start">
+      <div className="flex items-center gap-2 font-bold mb-1 sm:flex-col sm:items-start">
         <Image src={icon} alt="" width={48} height={48} />
-        <p className="text-xl">{title}</p>
+        <p className="text-xl tracking-tighter">{title}</p>
       </div>
-      <p className="text-sm tracking-tight">{text}</p>
+      <p className="text-[0.78em] tracking-tight mt-2">{text}</p>
     </div>
   );
 };

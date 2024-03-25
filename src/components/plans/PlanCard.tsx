@@ -38,7 +38,7 @@ export const PlanCard: FC<PropsPlanCard> = ({
     ? price - (price * discountRate) / 100
     : price;
   return (
-    <Card className="my-10 max-w-72 pt-10 px-8 pb-12">
+    <Card className="my-1 max-w-72 pt-10 px-8 pb-12">
       <Card.Header className="pb-6">
         <>
           <div
