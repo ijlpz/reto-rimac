@@ -1,9 +1,4 @@
-import React, {
-  MouseEvent,
-  FunctionComponent,
-  FormEvent,
-  ReactNode,
-} from 'react';
+import React, { MouseEvent, FormEvent, ReactNode, FC } from 'react';
 
 export interface ButtonProps {
   name?: string;
@@ -22,7 +17,7 @@ const variantBackground = {
   secondary: 'bg-secondary',
 };
 
-export const Button: FunctionComponent<ButtonProps> = ({
+export const Button: FC<ButtonProps> = ({
   name,
   type = 'button',
   variant = 'primary',
@@ -42,7 +37,11 @@ export const Button: FunctionComponent<ButtonProps> = ({
         rounded-full
         text-white
         font-bold
-        ${disabled ? 'bg-slate-500 cursor-default' : `${variantBackground[variant]}`}
+        ${
+          disabled
+            ? 'bg-slate-500 cursor-default'
+            : `${variantBackground[variant]}`
+        }
         ${className || ''}
       `}
       onClick={onClick}

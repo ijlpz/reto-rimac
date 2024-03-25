@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from './layout/Header/Header';
 import { getUserInfo } from '@/utils/storage';
 import { IUser } from '@/utils/interfaces';
@@ -6,8 +6,8 @@ import { ChooseCard } from './plans/ChooseCard';
 
 import dayjs from 'dayjs';
 import { ChoosePlans } from './plans/ChoosePlans';
-import { Stepper } from './common/Stepper/Stepper';
 import { Back } from './common/Back/Back';
+import { StepperRimac } from './StepperRimac';
 
 const calcUserAge = (birthDay: string) => {
   const formattedBirthDay = birthDay.split('-').reverse().join('-');
@@ -38,16 +38,21 @@ export const Plans = () => {
   return (
     <div className="relative p-0 m-0">
       <Header />
-      <Stepper>
-        <Stepper.Step number={1} isActive>
-          Planes y coberturas
-        </Stepper.Step>
-        <Stepper.Step number={2} isCompleted>
-          Resumen
-        </Stepper.Step>
-      </Stepper>
-      <Back route="/" className="text-[#4F4FFF] font-bold pt-10 pb-10" />
-      <div className="max-w-xl m-auto">
+      <div className="w-full bg-transparent sm:bg-[#EDEFFC] border-b border-solid border-[#EDEFFC] flex items-center px-4">
+        <div className="sm:hidden">
+          <Back route="/" className="text-[#4F4FFF] font-bold" />
+        </div>
+        <StepperRimac
+          stepActive={1}
+          stepsText={['Planes y coberturas', 'Resumen']}
+        />
+      </div>
+      <div className="hidden sm:block">
+        <Back route="/" className="text-[#4F4FFF] font-bold pt-10 px-4">
+          Volver
+        </Back>
+      </div>
+      <div className="max-w-xl m-auto pt-10">
         <div className="sm:text-center px-4 sm:px-0 max-w-md m-auto">
           <h2
             className="text-2xl sm:text-[2.3em] font-bold text-gray-800"
