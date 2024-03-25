@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-import { booleanTrueRequired, stringRequired } from '../schemas';
+import { booleanTrueRequired, phoneSchema, stringRequired } from '../schemas';
 import { IRegister } from '@/utils/interfaces';
 
 export const initialValues: IRegister = {
@@ -14,7 +14,7 @@ export const initialValues: IRegister = {
 export const validationSchema = Yup.object({
   documentType: stringRequired,
   documentNumber: stringRequired,
-  phone: stringRequired,
+  phone: phoneSchema,
   privacyPolicies: booleanTrueRequired,
   commercialPolicies: booleanTrueRequired,
 });
