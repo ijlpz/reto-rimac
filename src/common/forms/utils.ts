@@ -19,3 +19,7 @@ export function getFeedbackError<T>(
     name: key as string,
   };
 }
+
+export function keepNumbersOnly(value = '', length: number) {
+  return value.substring(0, length).replace(/[^0-9]/g, '');
+}

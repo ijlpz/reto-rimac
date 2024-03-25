@@ -12,13 +12,13 @@ import BackgroundHome from './BackgroundHome';
 import Footer from './layout/Footer/Footer';
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from '@/common/forms/register';
-import { getFeedbackError } from '@/common/forms/utils';
+import { getFeedbackError, keepNumbersOnly } from '@/common/forms/utils';
 import { getUserInfo, removeUserInfo, setUserInfo } from '@/utils/storage';
 import { useRouter } from 'next/router';
 
 const OPTIONS = [
   { value: 'dni', label: 'DNI' },
-  { value: 'ce', label: 'CE' },
+  { value: 'ruc', label: 'RUC' },
   { value: 'passport', label: 'Pasaporte' },
 ];
 
@@ -34,7 +34,7 @@ export const Home = () => {
   } = useQuery(['user'], () => apiService.getUser(), {
     enabled: false,
     retry: false,
-    cacheTime: 0, 
+    cacheTime: 0,
   });
 
   const formik = useFormik<typeof initialValues>({
@@ -138,6 +138,13 @@ export const Home = () => {
                   label="Celular"
                   {...formik.getFieldProps('phone')}
                   {...getFeedbackError(formik, 'phone')}
+                  onChange={(e) =>
+                    formik.setFieldValue(
+                      'phone',
+                      keepNumbersOnly(e.target.value, 9),
+                    )
+                  }
+                  type="tel"
                 />
               </div>
               <div className="mt-6">
