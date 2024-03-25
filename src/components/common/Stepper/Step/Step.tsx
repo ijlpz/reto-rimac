@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 export interface StepperStepProps {
   number: number;
@@ -9,7 +9,7 @@ export interface StepperStepProps {
   onClick?: () => void;
 }
 
-export const Step: FunctionComponent<StepperStepProps> = ({
+export const Step: FC<StepperStepProps> = ({
   children,
   number,
   className = '',
