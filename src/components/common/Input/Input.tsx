@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useRef,
   useState,
-  FunctionComponent,
+  FC,
 } from 'react';
 
 export interface InputProps {
@@ -26,7 +26,7 @@ export interface InputProps {
   readonly?: boolean;
 }
 
-export const Input: FunctionComponent<InputProps> = ({
+export const Input: FC<InputProps> = ({
   variant = 'primary',
   type = 'text',
   name,

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 
 import { StepperStepProps, Step } from './Step/Step';
 
@@ -7,19 +7,19 @@ export interface StepperProps {
   className?: string;
 }
 
-const RawStepper: FunctionComponent<StepperProps> = ({
+const RawStepper: FC<StepperProps> = ({
   children,
   className = '',
 }) => {
   return (
-    <div className={`${className} flex flex-row justify-center m-auto py-4 bg-transparent sm:bg-[#EDEFFC] border-b border-solid border-[#EDEFFC]`}>
+    <div className={`${className} flex flex-row justify-center m-auto py-4`}>
       {children}
     </div>
   );
 };
 
-type RawStepperComponents = FunctionComponent<StepperProps> & {
-  Step: FunctionComponent<StepperStepProps>;
+type RawStepperComponents = FC<StepperProps> & {
+  Step: FC<StepperStepProps>;
 };
 
 export const Stepper = RawStepper as RawStepperComponents;
