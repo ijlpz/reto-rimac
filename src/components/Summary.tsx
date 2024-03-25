@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Header from './layout/Header/Header';
 import { Card } from './common/Card/Card';
 import { Icon } from './common/Icon/Icon';
@@ -6,12 +6,20 @@ import { getUserInfo } from '@/utils/storage';
 import { ISummary } from '@/utils/interfaces';
 import { Back } from './common/Back/Back';
 import { StepperRimac } from './StepperRimac';
+import { useRouter } from 'next/router';
 
 export const Summary = () => {
   const summaryData = getUserInfo();
+  const { push: NavigateTo } = useRouter();
   const summaryDataObject: ISummary = useMemo(() => {
     return summaryData ? JSON.parse(summaryData) : {};
   }, [summaryData]);
+
+  useEffect(() => {
+    if (!summaryDataObject.price) {
+      NavigateTo('/planes');
+    }
+  }, [NavigateTo, summaryDataObject.price]);
 
   return (
     <>
@@ -19,7 +27,7 @@ export const Summary = () => {
 
       <div className="w-full bg-transparent sm:bg-[#EDEFFC] border-b border-solid border-[#EDEFFC] flex items-center px-4">
         <div className="sm:hidden">
-          <Back route="/" className="text-[#4F4FFF] font-bold" />
+          <Back route="/planes" className="text-[#4F4FFF] font-bold" />
         </div>
         <StepperRimac
           stepActive={2}
@@ -34,7 +42,9 @@ export const Summary = () => {
       </div>
 
       <div className="max-w-[960px] m-auto px-4 pt-10">
-        <h1 className="font-bold text-3xl sm:text-4xl text-[#141938]">Resumen del seguro</h1>
+        <h1 className="font-bold text-3xl sm:text-4xl text-[#141938]">
+          Resumen del seguro
+        </h1>
         <Card className="mt-12 mb-12">
           <Card.Header className="pb-4">
             <h2 className="text-xs font-bold">PRECIOS CALCULADOS PARA:</h2>
@@ -55,10 +65,10 @@ export const Summary = () => {
             >{`Celular: ${summaryDataObject.phone}`}</p>
 
             <p className="font-bold mt-4">Plan elegido</p>
-            <p suppressHydrationWarning>{summaryDataObject.planName}</p>
-            <p
-              suppressHydrationWarning
-            >{`Costo del Plan: $${summaryDataObject.price} al mes`}</p>
+            <p suppressHydrationWarning>{summaryDataObject.planName || ''}</p>
+            <p suppressHydrationWarning>{`Costo del Plan: $${
+              summaryDataObject.price || ''
+            } al mes`}</p>
           </Card.Content>
         </Card>
       </div>

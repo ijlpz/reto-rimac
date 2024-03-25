@@ -52,10 +52,10 @@ export const Plans = () => {
           Volver
         </Back>
       </div>
-      <div className="max-w-xl m-auto pt-10">
+      <div className="max-w-[540px] m-auto pt-14">
         <div className="sm:text-center px-4 sm:px-0 max-w-md m-auto">
           <h2
-            className="text-2xl sm:text-[2.3em] font-bold text-gray-800"
+            className="text-2xl sm:text-[2.3em] font-bold text-gray-800 leading-tight"
             suppressHydrationWarning
           >{`${userInfoObject.name} ¿Para quién deseas cotizar?`}</h2>
           <p className="text-base mt-2 font-medium text-gray-700">
