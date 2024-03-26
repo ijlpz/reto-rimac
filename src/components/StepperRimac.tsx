@@ -3,13 +3,10 @@ import { Stepper } from './common/Stepper/Stepper';
 import { StepperMobile } from './common/StepperMobile/StepperMobile';
 
 interface StepperRimacProps {
-  stepsText: string[];
   stepActive: number;
 }
-export const StepperRimac: FC<StepperRimacProps> = ({
-  stepsText,
-  stepActive,
-}) => {
+export const StepperRimac: FC<StepperRimacProps> = ({ stepActive }) => {
+  const stepsText = ['Planes y coberturas', 'Resumen'];
   return (
     <div className="w-full">
       <div className="hidden sm:block">

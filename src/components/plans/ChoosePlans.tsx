@@ -22,10 +22,11 @@ export const ChoosePlans: FC<ChoosePlansProps> = ({
     enabled: true,
     retry: false,
   });
+  if (!plans) return null;
   return (
     <div className="max-w-[928px] m-auto">
       <div className={`flex flex-wrap justify-center gap-8`}>
-        {plans?.list
+        {plans.list
           .filter((plan: IPlan) => plan?.age <= ageUser)
           .map((plan: IPlan, index: number) => (
             <PlanCard

@@ -17,21 +17,20 @@ const calcUserAge = (birthDay: string) => {
 };
 
 export const Plans = () => {
-  const initialUserInfo = getUserInfo() || '{}';
   const [userInfoObject, setUserInfoObject] = useState<IUser>({} as IUser);
   const [selectedCard, setSelectedCard] = useState(0);
   const choosePlansRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (initialUserInfo !== '{}') {
-      const info = JSON.parse(initialUserInfo);
-      setUserInfoObject(info);
-    }
-  }, [initialUserInfo]);
+    const info = JSON.parse(getUserInfo() as string);
+    setUserInfoObject(info);
+  }, []);
 
   useEffect(() => {
     if (selectedCard && choosePlansRef.current) {
-      choosePlansRef.current.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        choosePlansRef?.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 200);
     }
   }, [selectedCard]);
 
@@ -42,10 +41,7 @@ export const Plans = () => {
         <div className="sm:hidden">
           <Back route="/" className="text-[#4F4FFF] font-bold" />
         </div>
-        <StepperRimac
-          stepActive={1}
-          stepsText={['Planes y coberturas', 'Resumen']}
-        />
+        <StepperRimac stepActive={1} />
       </div>
       <div className="hidden sm:block">
         <Back route="/" className="text-[#4F4FFF] font-bold pt-10 px-4">
@@ -54,10 +50,9 @@ export const Plans = () => {
       </div>
       <div className="max-w-[540px] m-auto pt-14">
         <div className="sm:text-center px-4 sm:px-0 max-w-md m-auto">
-          <h2
-            className="text-2xl sm:text-[2.3em] font-bold text-gray-800 leading-tight"
-            suppressHydrationWarning
-          >{`${userInfoObject.name} ¿Para quién deseas cotizar?`}</h2>
+          <h2 className="text-2xl sm:text-[2.3em] font-bold text-gray-800 leading-tight">{`${
+            userInfoObject.name || ''
+          } ¿Para quién deseas cotizar?`}</h2>
           <p className="text-base mt-2 font-medium text-gray-700">
             Selecciona la opción que se ajuste más a tus necesidades.
           </p>

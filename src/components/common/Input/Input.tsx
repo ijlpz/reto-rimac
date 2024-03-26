@@ -44,8 +44,6 @@ export const Input: FC<InputProps> = ({
   readonly = false,
 }) => {
   const [defaultName, setDefaultName] = useState<string>();
-  const inputRef = useRef<HTMLInputElement>(null);
-  const labelRef = useRef<HTMLLabelElement>(null);
 
   useEffect(() => {
     if (!name) {
@@ -57,7 +55,6 @@ export const Input: FC<InputProps> = ({
     <div className={`${className || ''} relative`}>
       <input
         id={name || defaultName}
-        ref={inputRef}
         type={type}
         name={name || defaultName}
         className={`
@@ -88,7 +85,6 @@ export const Input: FC<InputProps> = ({
         readOnly={readonly}
       />
       <label
-        ref={labelRef}
         htmlFor={name || defaultName}
         className={`
             absolute top-[6px] left-3 px-1
