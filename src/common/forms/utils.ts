@@ -2,7 +2,6 @@ import { FormikState } from 'formik';
 
 interface FeedbackValues {
   feedback: string;
-  name?: string;
   error: boolean;
 }
 
@@ -16,7 +15,6 @@ export function getFeedbackError<T>(
   return {
     feedback,
     error: feedback ? true : false,
-    name: key as string,
   };
 }
 
